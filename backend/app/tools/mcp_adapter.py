@@ -1,7 +1,7 @@
 import asyncio
 import logging
 import time
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List, Optional, Tuple
 from backend.app.safety.engine import SafetyEngine, default_safety_engine
 from backend.app.safety.models import (
     ActionRequest,
@@ -94,7 +94,7 @@ class MCPToolAdapter:
         arguments: Dict[str, Any],
         context: WorkflowContext,
         timeout_seconds: float = 10.0,
-    ) -> (SafetyEvaluationResult, Optional[ToolOutcome]):
+    ) -> Tuple[SafetyEvaluationResult, Optional[ToolOutcome]]:
         """
         Intercepts tool call, runs through Safety Engine, executes only if ALLOWED,
         and records execution result.
